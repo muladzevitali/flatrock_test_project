@@ -1,0 +1,10 @@
+.git
+**.ipynb_checkpoints/*
+*.ipynb
+Dockerfile
+docker-compose.yml
+.gitignore
+README.md
+data_manipulations/*
+.idea/*
+application/.idea/*

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics</title>
+    <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+
+    <div class="pricing-headermx-auto text-center">
+        <form action="{{ url }}" id="main_form" method="post">
+            {{ form.csrf }}
+            {{form.hidden_tag()}}
+
+            <div class="mb-1">
+                <div class="form-group">
+                    <h1 class="display-4">SELECT REPORT YEAR:</h1>
+
+                    <select class="custom-select d-block w-100" name="years">
+                        <option value="">Choose...</option>
+                        {% for option in form.years.choices %}
+                        <option value="{{option[0]}}">{{option[1]}}</option>
+                        {% endfor %}}
+                    </select>
+                </div>
+
+            </div>
+            <div class="mb-1">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    {% if table %}
+    <div class="pricing-headermx-auto text-center" style="margin-top: 10%">
+        <div class="mb-1">
+            <div class="form-group">
+                <div class="table-responsive">
+                    {{ table | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <form method="get" action="{{ url_for('analytics_app.index')}}">
+        <button type="submit" class="btn btn-outline-dark" style="position: fixed;bottom: 1%; right: 1%">Back to Main
+        </button>
+    </form>
+</div>
+</body>
+</html>

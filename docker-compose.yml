@@ -1,0 +1,19 @@
+flask:
+  build: .
+  container_name: flask
+  volumes:
+    - ./application:/application
+    - ./data:/data
+  working_dir: /application
+  links:
+    - mongo
+  ports:
+    - "5001:5000"
+  command: /miniconda/bin/python main.py
+
+mongo:
+  image: mongo:latest
+  container_name: mongo
+  command: mongod --port 27018
+  ports:
+    - "27018:27018"
